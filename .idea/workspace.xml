@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65f0d768-952c-46a8-b928-f87f2a5dc53a" name="Default Changelist" comment="Publish to Heroku">
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+    <list default="true" id="65f0d768-952c-46a8-b928-f87f2a5dc53a" name="Default Changelist" comment="Procfile">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +179,7 @@
       <option name="presentableId" value="Default" />
       <updated>1609112639284</updated>
       <workItem from="1609112647318" duration="13444000" />
-      <workItem from="1610855697266" duration="15982000" />
+      <workItem from="1610855697266" duration="18013000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1609173265560</created>
@@ -215,6 +216,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Inital commit" />
     <MESSAGE value="Publish to Heroku" />
-    <option name="LAST_COMMIT_MESSAGE" value="Publish to Heroku" />
+    <MESSAGE value="Procfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Procfile" />
   </component>
 </project>
