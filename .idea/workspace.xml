@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65f0d768-952c-46a8-b928-f87f2a5dc53a" name="Default Changelist" comment="Inital commit">
-      <change afterPath="$PROJECT_DIR$/public/assets/css/webkit.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home/confirm.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/moncash.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/moncash.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonCash/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonCash/Credential.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonCash/GatewayBaseUrl.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonCash/GatewayBaseUrl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonCash/Host.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonCash/Host.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonCash/OrderDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonCash/Transaction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonCash/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonCash/Payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonCash/PaymentDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonCash/PaymentDetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+    <list default="true" id="65f0d768-952c-46a8-b928-f87f2a5dc53a" name="Default Changelist" comment="Publish to Heroku">
+      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +178,7 @@
       <option name="presentableId" value="Default" />
       <updated>1609112639284</updated>
       <workItem from="1609112647318" duration="13444000" />
-      <workItem from="1610855697266" duration="15640000" />
+      <workItem from="1610855697266" duration="15982000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1609173265560</created>
@@ -200,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609173265560</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Publish to Heroku">
+      <created>1610908143185</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610908143185</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +214,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Inital commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inital commit" />
+    <MESSAGE value="Publish to Heroku" />
+    <option name="LAST_COMMIT_MESSAGE" value="Publish to Heroku" />
   </component>
 </project>
