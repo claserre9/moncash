@@ -25,6 +25,7 @@ class HomeController extends AbstractController
         $client_id = '7834cbaabb89cf9ce232cd407b19df30';
         $client_secret = 'Dq8SWBS2whE_B_VxjkgdODcJ0ZOx3Ou4gdvj3JhtYOe-Dz9jox4fMgZwYeXCRJBp';
         //$auth = new Authenticate($client,$client_id,$client_secret);
+        $session->start();
         $orderId = $session->getId();
 
         $payment = new Payment($client, $client_id, $client_secret, $orderId, 2000);
