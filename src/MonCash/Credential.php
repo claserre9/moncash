@@ -4,40 +4,71 @@
 namespace App\MonCash;
 
 
-use Symfony\Component\HttpClient\Exception\ClientException;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class Authenticate
+class Credential
 {
+    /**
+     * @var string
+     */
     private $client_id;
-    private $client_secret;
-    private $host;
-    private $mode;
-
-    private $access_token;
-    private $token_type;
-
-    private $client;
 
     /**
-     * @return mixed
+     * @var string
      */
-    public function getAccessToken()
+    private $client_secret;
+
+    /**
+     * @var string
+     */
+    private $host;
+
+    /**
+     * @var string
+     */
+    private $mode;
+
+    /**
+     * @var string
+     */
+    private $access_token;
+
+    /**
+     * @var string
+     */
+    private $token_type;
+
+    /**
+     * @var HttpClientInterface
+     */
+    private $client;
+
+
+    /**
+     * @return string
+     */
+    public function getAccessToken(): string
     {
         return $this->access_token;
     }
 
+
     /**
-     * @return mixed
+     * @return string
      */
-    public function getTokenType()
+    public function getTokenType(): string
     {
         return $this->token_type;
     }
 
+
     /**
-     * @return mixed
+     * @return string
      */
     public function getMode(): string
     {
@@ -59,7 +90,7 @@ class Authenticate
      * @param $client_secret
      * @param string $host
      */
-    public function __construct(HttpClientInterface $client, $client_id, $client_secret, $host = Host::TEST)
+    public function __construct(HttpClientInterface $client, string $client_id, string $client_secret, string $host = Host::TEST)
     {
         $this->client = $client;
         $this->client_id = $client_id;
@@ -68,38 +99,42 @@ class Authenticate
 
     }
 
+
     /**
-     * @param mixed $client_id
-     * @return Authenticate
+     * @param $client_id
+     * @return $this
      */
-    public function setClientId($client_id): Authenticate
+    public function setClientId($client_id): Credential
     {
         $this->client_id = $client_id;
         return $this;
     }
 
+
     /**
-     * @param mixed $client_secret
-     * @return Authenticate
+     * @param $client_secret
+     * @return $this
      */
-    public function setClientSecret($client_secret): Authenticate
+    public function setClientSecret($client_secret): Credential
     {
         $this->client_secret = $client_secret;
         return $this;
     }
 
+
     /**
-     * @param mixed|string $host
-     * @return Authenticate
+     * @param string $host
+     * @return $this
      */
-    public function setHost(string $host): Authenticate
+    public function setHost(string $host): Credential
     {
         $this->host = $host;
         return $this;
     }
 
+
     /**
-     * @return mixed|string
+     * @return string
      */
     public function getHost(): string
     {
@@ -109,11 +144,6 @@ class Authenticate
 
     /**
      * @return array
-     * @throws TransportExceptionInterface
-     * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
-     * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
-     * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
-     * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      */
     public function getResponse(): array
     {
@@ -138,16 +168,11 @@ class Authenticate
                 "status" => $response->getStatusCode()
             ];
 
-        } catch (ClientException $exception) {
-
+        } catch (TransportExceptionInterface | ClientExceptionInterface | DecodingExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface $e) {
             return [
-                "response" => $exception->getResponse()->toArray(),
-                "status" => $exception->getResponse()->getStatusCode()
+                "response" => $e->getMessage()
             ];
-        } catch (TransportExceptionInterface $e) {
-            return ["response" => $e->getMessage()];
         }
     }
-
 
 }

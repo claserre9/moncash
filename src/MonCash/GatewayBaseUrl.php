@@ -6,6 +6,6 @@ namespace App\MonCash;
 
 class GatewayBaseUrl
 {
-    const LIVE = "https://moncashbutton.digicelgroup.com/Moncash-middleware";
-    const TEST = "https://sandbox.moncashbutton.digicelgroup.com/Moncash-middleware";
+    public const LIVE = "https://moncashbutton.digicelgroup.com/Moncash-middleware";
+    public const TEST = "https://sandbox.moncashbutton.digicelgroup.com/Moncash-middleware";
 }

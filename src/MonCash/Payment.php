@@ -3,19 +3,22 @@
 
 namespace App\MonCash;
 
-
-use Symfony\Component\HttpClient\Exception\ClientException;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Payment
 {
     /**
-     * @Authenticate
+     * @Credential
      */
-    private $authenticate;
+    private $credential;
 
     /**
-     * @var
+     * @string
      */
     private $orderId;
 
@@ -24,12 +27,15 @@ class Payment
      */
     private $amout;
 
+    /**
+     * @var HttpClientInterface
+     */
     private $client;
-
 
 
     /**
      * Payment constructor.
+     * @param HttpClientInterface $client
      * @param $client_id
      * @param $client_secret
      * @param $orderId
@@ -37,7 +43,7 @@ class Payment
      */
     public function __construct(HttpClientInterface $client, $client_id, $client_secret, $orderId, $amout)
     {
-        $this->authenticate = new Authenticate($client, $client_id, $client_secret);
+        $this->credential = new Credential($client, $client_id, $client_secret);
         $this->orderId = $orderId;
         $this->amout = $amout;
         $this->client = $client;
@@ -47,19 +53,14 @@ class Payment
 
     /**
      * @return array
-     * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
-     * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
-     * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
-     * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
-     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
      */
     public function createPayment(): array
     {
         $client = $this->client;
 
-        $host = $this->authenticate->getHost();
+        $host = $this->credential->getHost();
 
-        $response = $this->authenticate->getResponse();
+        $response = $this->credential->getResponse();
         $token_type = $response['response']['token_type'];
         $access_token = $response['response']['access_token'];
 
@@ -80,8 +81,10 @@ class Payment
             ]);
             return $response->toArray();
 
-        } catch (ClientException $exception) {
-            return $exception->getResponse()->toArray();
+        } catch (ClientExceptionInterface | DecodingExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface | TransportExceptionInterface $e) {
+            return [
+                "response" => $e->getMessage()
+            ];
         }
 
     }
@@ -91,7 +94,7 @@ class Payment
      */
     public function getAccessToken()
     {
-        return $this->authenticate->getAccessToken();
+        return $this->credential->getAccessToken();
     }
 
     /**
@@ -99,24 +102,15 @@ class Payment
      */
     public function getTokenType()
     {
-        return $this->authenticate->getTokenType();
+        return $this->credential->getTokenType();
     }
 
     /**
-     * @return Authenticate
+     * @return string
      */
-    public function getAuthenticate(): Authenticate
+    public function getHost(): string
     {
-        return $this->authenticate;
+        return $this->credential->getHost();
     }
-
-    /**
-     * @return HttpClientInterface
-     */
-    public function getClient(): HttpClientInterface
-    {
-        return $this->client;
-    }
-
 
 }

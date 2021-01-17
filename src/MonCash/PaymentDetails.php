@@ -8,7 +8,7 @@ namespace App\MonCash;
 
 class PaymentDetails
 {
-    private $paymentCreateResponse = [];
+    private $paymentCreateResponse;
 
     private $mode;
 
@@ -54,6 +54,30 @@ class PaymentDetails
         $this->paymentToken = $paymentCreateResponse['payment_token']['token'];
 
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPaymentToken()
+    {
+        return $this->paymentToken;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMode()
+    {
+        return $this->mode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
 }
