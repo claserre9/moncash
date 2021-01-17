@@ -17,7 +17,7 @@ class Transaction
     {
 
 
-        $uri = "https://$host/v1/RetrieveOrderPayment";
+        $uri = "https://$host/v1/RetrieveTransactionPayment";
 
         try {
             $response = $client->request('POST', $uri, [
@@ -32,8 +32,10 @@ class Transaction
             ]);
             return $response->toArray();
         } catch (ClientExceptionInterface | DecodingExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface | TransportExceptionInterface $e) {
+
             return [
-                "response" => $e->getMessage()
+                "response" => $e->getMessage(),
+                "status" => $e->getCode(),
             ];
         }
 

@@ -5,45 +5,51 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="container">
-            <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
-                <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
-                <span class="swal2-success-line-tip"></span>
-                <span class="swal2-success-line-long"></span>
-                <div class="swal2-success-ring"></div>
-                <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
-                <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
-            </div>
-            <p class="text-center h2 m-3">Mèsi paske ou peye!!</p>
-            <table class="table table-hover my-5">
-                <tbody>
-                <tr>
-                    <td>Nimewo referans</td>
-                    <td>{{ payment.reference }}</td>
-                </tr>
-                <tr>
-                    <td>Nimewo tranzaksyon</td>
-                    <td>{{ payment.transaction_id }}</td>
-                </tr>
-                <tr>
-                    <td>Montan ke ou peye</td>
-                    <td>{{ payment.cost }} goud</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
 
+    <div class="container">
+        {% if status == 200 %}
+            <div class="container">
+                <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                    <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                    <span class="swal2-success-line-tip"></span>
+                    <span class="swal2-success-line-long"></span>
+                    <div class="swal2-success-ring"></div>
+                    <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                    <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                </div>
+                <p class="text-center h2 m-3">Mèsi paske ou peye!!</p>
+                <table class="table table-hover my-5">
+                    <tbody>
+                    <tr>
+                        <td>Nimewo referans</td>
+                        <td>{{ payment.reference }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nimewo tranzaksyon</td>
+                        <td>{{ payment.transaction_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Montan ke ou peye</td>
+                        <td>{{ payment.cost }} goud</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;">
+                <span class="swal2-x-mark">
+                    <span class="swal2-x-mark-line-left"></span>
+                    <span class="swal2-x-mark-line-right"></span>
+                </span>
+            </div>
+            <p class="text-center h2 m-3">Gen yon ti pwoblèm</p>
+            <p class="text-center h2 m-3">Kontakte administratè a pou plis enfòmasyon</p>
+        {% endif %}
         <div class="text-center">
-            <a href= "{{ path('home') }}" class="btn btn-outline-success ">Retounen nan akèy</a>
+            <a href="{{ path('backtohome') }}" class="btn btn-outline-success ">Retounen nan akèy</a>
         </div>
     </div>
 
 
-{#    <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;">#}
-{#        <span class="swal2-x-mark">#}
-{#            <span class="swal2-x-mark-line-left"></span>#}
-{#            <span class="swal2-x-mark-line-right"></span>#}
-{#        </span>#}
-{#    </div>#}
+
 {% endblock %}

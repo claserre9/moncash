@@ -6,6 +6,7 @@ use App\MonCash\Payment;
 use App\MonCash\PaymentDetails;
 use App\MonCash\Transaction;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -56,7 +57,22 @@ class HomeController extends AbstractController
         $access_token = $session->get("access_token");
         $host = $session->get("host");
         $transactionDetails = Transaction::RetrieveTransactionPayment($client, $host, $access_token, $token_type, $transactionId);
-        $session->clear();
+        //dd($transactionDetails['status']);
+//        if(200!==$transactionDetails['status']){
+//
+//        }
+
         return $this->render("home/confirm.html.twig", $transactionDetails);
+    }
+
+    /**
+     * @Route(name="backtohome")
+     * @param SessionInterface $session
+     * @return RedirectResponse
+     */
+    public function backToHome(SessionInterface $session): RedirectResponse
+    {
+        $session->clear();
+        return $this->redirectToRoute('home');
     }
 }
